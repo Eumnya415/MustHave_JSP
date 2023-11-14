@@ -132,9 +132,9 @@ public class BoardDAO extends JDBConnect {
         try {
             // INSERT 쿼리문 작성
             String query = "INSERT INTO board ( "
-                    + " num,title,content,id,visitcount) "
+                    + " title,content,id,visitcount) "
                     + " VALUES ( "
-                    + " seq_board_num.NEXTVAL, ?, ?, ?, 0)";
+                    + " ?, ?, ?, 0)";
 
             psmt = con.prepareStatement(query);  // 동적 쿼리
             psmt.setString(1, dto.getTitle());

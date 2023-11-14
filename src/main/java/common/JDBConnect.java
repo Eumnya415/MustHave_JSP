@@ -5,10 +5,10 @@ import javax.xml.transform.Result;
 import java.sql.*;
 
 public class JDBConnect {
-    public Connection con;
-    public Statement stmt;
-    public PreparedStatement psmt;
-    public ResultSet rs;
+    public Connection con;  // DB 연결을 담당하는 Connection 객체
+    public Statement stmt;  // SQL 문 실행을 담당하는 Statement 객체
+    public PreparedStatement psmt;  // 미리 컴파일된 SQL문을 실행하는 PreparedStatement 객체
+    public ResultSet rs;  // 쿼리 결과를 닫는 ResultSet 객체
 
     // 기본 생성자
     public JDBConnect() {
@@ -24,7 +24,7 @@ public class JDBConnect {
 
             System.out.println("DB 연결 성공(기본 생성자)");
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace();  // 예외 발생 시 콘솔에 출력
         }
     }
 
