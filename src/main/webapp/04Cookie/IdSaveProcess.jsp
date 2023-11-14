@@ -7,7 +7,7 @@
     String user_pw = request.getParameter("user_pw");
     String save_check = request.getParameter("save_check");
 
-    if ("must".equals(user_id) && "1234".equals(user_pw)) {
+    if ("musthave".equals(user_id) && "1234".equals(user_pw)) {
         // 로그인 성공
         if (save_check != null && save_check.equals("Y")) {
             CookieManager.makeCookie(response, "loginId", user_id, 86400);
@@ -23,3 +23,11 @@
         JSFunction.alertBack("로그인에 실패했습니다.", out);
     }
 %>
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>

@@ -8,14 +8,17 @@
         <param-name>MariaDB_Driver</param-name>
         <param-value>org.mariadb.jdbc.Driver</param-value>
     </context-param>
+
     <context-param>
         <param-name>MariaDB_URL</param-name>
-        <param-value>jdbc:mariaDB://localhost:3306/mytestone</param-value>
+        <param-value>jdbc:mariadb://localhost:3306/mytestone</param-value>
     </context-param>
+
     <context-param>
         <param-name>MariaDB_Id</param-name>
         <param-value>root</param-value>
     </context-param>
+
     <context-param>
         <param-name>MariaDB_Pwd</param-name>
         <param-value>12345</param-value>
