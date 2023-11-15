@@ -27,6 +27,36 @@
 <head>
     <meta charset="UTF-8">
     <title>회원제 게시판</title>
+    <style>
+        /* 테이블 스타일 */
+        table {
+            border-collapse: collapse;
+            width: 90%;
+            margin: 10px 0;
+        }
+
+        /* 테이블 셀 스타일 */
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        /* 테이블 헤더 스타일 */
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* 버튼 스타일 */
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="../Common/Link.jsp" />  <!-- 공통 링크 -->
@@ -34,9 +64,9 @@
 <h2>목록 보기(List)</h2>
 <!-- 검색폼 -->
 <form method="get">
-    <table border="1" width="90%">
+    <table style="border: none; width: 90%;">
         <tr>
-            <td align="center">
+            <td style="text-align: center;">
                 <select name="searchField">
                     <option value="title">제목</option>
                     <option value="content">내용</option>
@@ -48,14 +78,24 @@
     </table>
 </form>
 <!-- 게시물 목록 테이블(표) -->
-<table border="1" width="90%">
+<table style="border: none; width: 90%;">
     <!-- 각 칼럼의 이름 -->
     <tr>
-        <th width="10%">번호</th>
-        <th width="50%">제목</th>
-        <th width="15%">작성자</th>
-        <th width="10%">조회수</th>
-        <th width="15%">작성일</th>
+        <th style="width: 10%;">
+            번호
+        </th>
+        <th style="width: 50%;">
+            제목
+        </th>
+        <th style="width: 15%;">
+            작성자
+        </th>
+        <th style="width: 10%;">
+            조회수
+        </th>
+        <th style="width: 15%;">
+            작성일
+        </th>
     </tr>
     <!-- 목록의 내용 -->
     <%
@@ -76,14 +116,20 @@
         {
             virtualNum = totalCount--;  // 전체 게시물 수에서 시작해 1씩 감소
     %>
-    <tr align="center">
+    <tr style="text-align: center;">
         <td><%= virtualNum %></td>  <!--게시물 번호-->
-        <td align="left">  <!--제목(+ 하이퍼링크)-->
+        <td style="text-align: left;">  <!--제목(+ 하이퍼링크)-->
             <a href="View.jsp?num=<%= dto.getNum() %>"><%= dto.getTitle() %></a>
         </td>
-        <td align="center"><%= dto.getId() %></td>          <!--작성자 아이디-->
-        <td align="center"><%= dto.getVisitcount() %></td>  <!--조회수-->
-        <td align="center"><%= dto.getPostdate() %></td>    <!--작성일-->
+        <td style="text-align: center;">
+            <%= dto.getId() %>
+        </td>
+        <td style="text-align: center;">
+            <%= dto.getVisitcount() %>
+        </td>
+        <td style="text-align: center;">
+            <%= dto.getPostdate() %>
+        </td>
     </tr>
     <%
             }
@@ -91,8 +137,8 @@
     %>
 </table>
 <!--목록 하단의 [글쓰기] 버튼-->
-<table border="1" width="90%">
-    <tr align="right">
+<table style="border: none; width: 90%;">
+    <tr style="text-align: right;">
         <td><button type="button" onclick="location.href='Write.jsp';">글쓰기
         </button></td>
     </tr>

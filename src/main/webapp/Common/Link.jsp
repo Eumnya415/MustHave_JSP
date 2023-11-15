@@ -3,9 +3,9 @@
 <html>
 <head><title>Session</title></head>
 <body>
-<table border="1" width="90%">
+<table style="border: none; width: 90%;">
     <tr>
-        <td align="center">
+        <td style="text-align: center;">
             <% if (session.getAttribute("UserId") == null) { %>
             <a href="../06Session/LoginForm.jsp">로그인</a>
             <% } else {%>
