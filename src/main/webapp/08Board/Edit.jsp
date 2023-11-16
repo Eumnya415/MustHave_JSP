@@ -40,7 +40,7 @@
 <form name="writeFrm" method="post" action="EditProcess.jsp"
       onsubmit="return validateForm(this);">
     <input type="hidden" name="num" value="<%= dto.getNum() %>" />
-    <table border="1" width="90%">
+    <table style="border: 1px solid black; width: 90%;">
         <tr>
             <td>제목</td>
             <td>
@@ -55,7 +55,7 @@
             </td>
         </tr>
         <tr>
-            <td colspan="2" align="center">
+            <td colspan="2" style="text-align: center;">
                 <button type="submit">작성 완료</button>
                 <button type="reset">다시 입력</button>
                 <button type="button" onclick="location.href='List.jsp';">

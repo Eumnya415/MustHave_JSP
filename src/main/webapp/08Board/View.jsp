@@ -56,7 +56,7 @@
                 <%= dto.getContent().replace("\r\n", "<br/>") %></td>
         </tr>
         <tr>
-            <td colspan="4" align="center">
+            <td colspan="4" style="text-align:center">
                 <%
                     if (session.getAttribute("UserId") != null
                             && session.getAttribute("UserId").toString().equals(dto.getId())) {

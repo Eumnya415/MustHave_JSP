@@ -56,6 +56,9 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
+
+
     </style>
 </head>
 <body>
@@ -81,19 +84,19 @@
 <table style="border: none; width: 90%;">
     <!-- 각 칼럼의 이름 -->
     <tr>
-        <th style="width: 10%;">
+        <th style="text-align: center; width: 10%;">
             번호
         </th>
-        <th style="width: 50%;">
+        <th style="text-align: center; width: 50%;">
             제목
         </th>
-        <th style="width: 15%;">
+        <th style="text-align: center; width: 15%;">
             작성자
         </th>
-        <th style="width: 10%;">
+        <th style="text-align: center; width: 10%;">
             조회수
         </th>
-        <th style="width: 15%;">
+        <th style="text-align: center; width: 15%;">
             작성일
         </th>
     </tr>
@@ -103,7 +106,7 @@
             // 게시물이 하나도 없을 때
     %>
     <tr>
-        <td colspan="5" align="center">
+        <td colspan="5" style="text-align: center;">
             등록된 게시물이 없습니다^^*
         </td>
     </tr>
@@ -117,7 +120,8 @@
             virtualNum = totalCount--;  // 전체 게시물 수에서 시작해 1씩 감소
     %>
     <tr style="text-align: center;">
-        <td><%= virtualNum %></td>  <!--게시물 번호-->
+        <td style="text-align: center;">
+            <%= virtualNum %></td>  <!--게시물 번호-->
         <td style="text-align: left;">  <!--제목(+ 하이퍼링크)-->
             <a href="View.jsp?num=<%= dto.getNum() %>"><%= dto.getTitle() %></a>
         </td>
