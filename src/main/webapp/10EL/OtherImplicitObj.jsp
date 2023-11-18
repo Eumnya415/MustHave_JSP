@@ -21,7 +21,7 @@
     </ul>
 
     <h3>컨텍스트 초기화 매개변수 읽기</h3>
-    <li>MariaDriver : ${ initParam.mariadbDriver }</li>
+    <li>MariaDriver : ${ initParam.MariaDB_Driver }</li>
 
     <h3>컨텍스트 루트 경로 읽기</h3>
     <li>${ pageContext.request.contextPath }</li>

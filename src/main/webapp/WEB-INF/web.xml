@@ -36,6 +36,7 @@
             <param-value>utf-8</param-value>
         </init-param>
     </filter>
+
     <filter-mapping>
         <filter-name>SetCharEncoding</filter-name>
         <url-pattern>/*</url-pattern>
@@ -58,5 +59,28 @@
         <servlet-name>DirectServletPrint</servlet-name>
         <url-pattern>/12Servlet/DirectServletPrint.do</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MemberAuth</servlet-name>
+        <servlet-class>servlet.MemberAuth</servlet-class>
+        <init-param>
+            <param-name>admin_id</param-name>
+            <param-value>nakja</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>MemberAuth</servlet-name>
+        <url-pattern>/12Servlet/MemberAuth.mvc</url-pattern>
+    </servlet-mapping>
+
+    <context-param>
+        <param-name>POSTS_PER_PAGE</param-name>
+        <param-value>10</param-value>
+    </context-param>
+    <context-param>
+        <param-name>PAGES_PER_BLOCK</param-name>
+        <param-value>5</param-value>
+    </context-param>
 
 </web-app>

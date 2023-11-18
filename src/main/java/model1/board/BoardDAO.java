@@ -73,37 +73,87 @@ public class BoardDAO extends JDBConnect {
         return bbs;
     }
 
-    // 검색 조건에 맞는 게시물 목록을 반환합니다(페이징 기능 지원).
+    // 기존 코드
+//    // 검색 조건에 맞는 게시물 목록을 반환합니다(페이징 기능 지원).
+//    public List<BoardDTO> selectListPage(Map<String, Object> map) {
+//        List<BoardDTO> bbs = new Vector<BoardDTO>();  // 결과(게시물 목록)를 담을 변수
+//
+//        // 쿼리문 템플릿
+//        String query = " SELECT * FROM ( "
+//                + "    SELECT Tb.*, ROWNUM rNum FROM ( "
+//                + "        SELECT * FROM board ";
+//
+//        // 검색 조건 추가
+//        if (map.get("searchWord") != null) {
+//            query += " WHERE " + map.get("searchField")
+//                    + " LIKE '%" + map.get("searchWord") + "%' ";
+//        }
+//
+//        query += "      ORDER BY num DESC "
+//                + "     ) Tb "
+//                + " ) "
+//                + " WHERE rNum BETWEEN ? AND ?";
+//
+//        try {
+//            // 쿼리문 완성
+//            psmt = con.prepareStatement(query);
+//            psmt.setString(1, map.get("start").toString());
+//            psmt.setString(2, map.get("end").toString());
+//
+//            // 쿼리문 실행
+//            rs = psmt.executeQuery();
+//
+//            while (rs.next()) {
+//                // 한 행(게시물 하나)의 데이터를 DTO에 저장
+//                BoardDTO dto = new BoardDTO();
+//                dto.setNum(rs.getString("num"));
+//                dto.setTitle(rs.getString("title"));
+//                dto.setContent(rs.getString("content"));
+//                dto.setPostdate(rs.getDate("postdate"));
+//                dto.setId(rs.getString("id"));
+//                dto.setVisitcount(rs.getString("visitcount"));
+//
+//                // 반환할 결과 목록에 게시물 추가
+//                bbs.add(dto);
+//            }
+//        }
+//        catch (Exception e) {
+//            System.out.println("게시물 조회 중 예외 발생");
+//            e.printStackTrace();
+//        }
+//
+//        // 목록 반환
+//        return bbs;
+//    }
+
+
+    // 수정 코드
     public List<BoardDTO> selectListPage(Map<String, Object> map) {
-        List<BoardDTO> bbs = new Vector<BoardDTO>();  // 결과(게시물 목록)를 담을 변수
+        List<BoardDTO> bbs = new Vector<BoardDTO>();
 
-        // 쿼리문 템플릿
-        String query = " SELECT * FROM ( "
-                + "    SELECT Tb.*, ROWNUM rNum FROM ( "
-                + "        SELECT * FROM board ";
+        String query = " SELECT * FROM board ";
 
-        // 검색 조건 추가
         if (map.get("searchWord") != null) {
             query += " WHERE " + map.get("searchField")
                     + " LIKE '%" + map.get("searchWord") + "%' ";
         }
 
-        query += "      ORDER BY num DESC "
-                + "     ) Tb "
-                + " ) "
-                + " WHERE rNum BETWEEN ? AND ?";
+        query += " ORDER BY num DESC LIMIT ? OFFSET ? ";
 
         try {
-            // 쿼리문 완성
             psmt = con.prepareStatement(query);
-            psmt.setString(1, map.get("start").toString());
-            psmt.setString(2, map.get("end").toString());
 
-            // 쿼리문 실행
+            int start = Integer.parseInt(map.get("start").toString());
+            int end = Integer.parseInt(map.get("end").toString());
+
+            // LIMIT에 사용할 개수 (end - start + 1)
+            psmt.setInt(1, (end - start + 1));
+            // OFFSET에 사용할 시작점 (start - 1)
+            psmt.setInt(2, (start - 1));
+
             rs = psmt.executeQuery();
 
             while (rs.next()) {
-                // 한 행(게시물 하나)의 데이터를 DTO에 저장
                 BoardDTO dto = new BoardDTO();
                 dto.setNum(rs.getString("num"));
                 dto.setTitle(rs.getString("title"));
@@ -112,7 +162,6 @@ public class BoardDAO extends JDBConnect {
                 dto.setId(rs.getString("id"));
                 dto.setVisitcount(rs.getString("visitcount"));
 
-                // 반환할 결과 목록에 게시물 추가
                 bbs.add(dto);
             }
         }
@@ -121,7 +170,6 @@ public class BoardDAO extends JDBConnect {
             e.printStackTrace();
         }
 
-        // 목록 반환
         return bbs;
     }
 

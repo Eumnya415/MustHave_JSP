@@ -44,9 +44,7 @@
         </tr>
         <tr>
             <td>내용</td>
-            <td>
-                <textarea name="content" style="width: 90%; height: 100px;"></textarea>
-            </td>
+            <td><textarea name="content" style="width: 90%; height: 100px;"></textarea></td>
         </tr>
         <tr>
             <td colspan="2" style="text-align: center;">
